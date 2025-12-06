@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Movie Recommender</h1>
+            <p class="subtitle">Discover movies you haven't watched yet (8.0+ rated)</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Movie Recommendation Section -->
+            <section class="recommendation-section">
+                <div class="recommendation-card" id="movieCard">
+                    <div class="movie-poster" id="posterContainer">
+                        <div class="loading">Loading...</div>
+                    </div>
+                    <div class="movie-info-preview">
+                        <h2 id="movieTitle">No Movie Selected</h2>
+                        <div class="rating">
+                            <span class="stars">⭐</span>
+                            <span id="movieRating">N/A</span>
+                        </div>
+                        <p class="year-runtime" id="yearRuntime">N/A</p>
+                    </div>
+                </div>
+                <button id="recommendBtn" class="btn btn-primary">Get Recommendation</button>
+                <button id="markWatchedBtn" class="btn btn-secondary" style="display: none;">Mark as Watched</button>
+            </section>
+
+            <!-- Movie Details Modal -->
+            <div id="detailsModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-body">
+                        <div class="modal-poster" id="modalPoster"></div>
+                        <div class="modal-info">
+                            <h2 id="modalTitle">Movie Title</h2>
+                            <div class="detail-item">
+                                <strong>Rating:</strong> <span id="modalRating">N/A</span> ⭐
+                            </div>
+                            <div class="detail-item">
+                                <strong>Year:</strong> <span id="modalYear">N/A</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Runtime:</strong> <span id="modalRuntime">N/A</span> minutes
+                            </div>
+                            <div class="detail-item">
+                                <strong>Genre:</strong> <span id="modalGenre">N/A</span>
+                            </div>
+                            <div class="detail-item plot">
+                                <strong>Plot:</strong>
+                                <p id="modalPlot">N/A</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watched Movies Tracker -->
+            <aside class="tracker-section">
+                <h3>📋 Watched Movies (<span id="watchedCount">0</span>)</h3>
+                <div class="watched-list" id="watchedList">
+                    <p class="empty-state">No movies watched yet</p>
+                </div>
+                <button id="clearHistoryBtn" class="btn btn-danger" style="display: none;">Clear History</button>
+            </aside>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
